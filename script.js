@@ -1,0 +1,1 @@
+let mesg = document.querySelector('.message');
