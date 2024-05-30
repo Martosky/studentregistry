@@ -9,5 +9,10 @@ function averageNum(score){
     return aveSco / score.length
 
     }
-    
-function getGrade(){}
+
+function getGrade(score){
+
+     if(score == 100){
+        return "A++"
+     }
+}
