@@ -18,6 +18,8 @@ function getGrade(score){
         return "A";
      }else if (score >= 80){
         return "B";
-     }
+     }else if (score >= 70){
+      return "c";
+   }
 
 }
