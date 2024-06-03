@@ -36,5 +36,9 @@ function message(aveScore, stdScore){
    let stdGrade = getGrade();
    let avgScore = averageNum();
 
-   
+    if (passInfo(stdScore) != "F"){
+      return "Your score is ! " + stdGrade + ". and your average is "+ avgScore + ". You passed."
+    }
+
+
 }
