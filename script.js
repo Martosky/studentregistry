@@ -37,8 +37,11 @@ function message(aveScore, stdScore){
    let avgScore = averageNum();
 
     if (passInfo(stdScore) != "F"){
-      return "Your score is ! " + stdGrade + ". and your average is "+ avgScore + ". You passed."
+      mesg.textContent = "Your score is ! " + stdGrade + ". and your average is "+ avgScore + ". You passed.";
+    }else{
+      mesg.textContent = "Your score is ! " + stdGrade + ". and your average is "+ avgScore + ". You failed.";
     }
 
-
+    return mesg;
 }
+console.log(message([23,29,10,15,11], 45))
