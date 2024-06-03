@@ -27,3 +27,7 @@ function getGrade(score){
    }
 
 }
+
+function passInfo(score) {
+   return getGrade(score) == "F"
+}
