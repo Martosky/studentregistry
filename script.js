@@ -4,7 +4,7 @@ function averageNum(score){
     let aveSco = 0
 
     for (let i = 0; i < score.length; i++){
-        aveSco + score[i]
+        aveSco += score[i]
     }
     return aveSco / score.length
 
@@ -30,4 +30,8 @@ function getGrade(score){
 
 function passInfo(score) {
    return getGrade(score) == "F"
+}
+
+function message(aveScore, stdScore){
+   
 }
