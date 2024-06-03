@@ -33,5 +33,8 @@ function passInfo(score) {
 }
 
 function message(aveScore, stdScore){
+   let stdGrade = getGrade();
+   let avgScore = averageNum();
+
    
 }
