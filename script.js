@@ -1,47 +1,34 @@
-let mesg = document.querySelector('.message');
+document.addEventListener('DOMContentLoaded', function() {
+   const productItems = document.querySelectorAll('.product-item');
 
-function averageNum(score){
-    let aveSco = 0
+   productItems.forEach(item => {
+       const viewDetailsBtn = item.querySelector('.view-details-btn');
+       const productId = item.getAttribute('data-id');
+       
+       viewDetailsBtn.addEventListener('click', function() {
+           // Redirect to product.html with product id as query parameter
+           window.location.href = `product.html?id=${productId}`;
+       });
+   });
 
-    for (let i = 0; i < score.length; i++){
-        aveSco += score[i]
-    }
-    return aveSco / score.length
+   // If you need to populate product details on product.html based on the ID in query parameter
+   if (window.location.pathname.includes('product.html')) {
+       const params = new URLSearchParams(window.location.search);
+       const productId = params.get('id');
+       
+       // Example: Fetch product details from a database or hardcoded data
+       const productDetails = {
+           1: { title: 'Product 1', description: 'Description of Product 1.' },
+           2: { title: 'Product 2', description: 'Description of Product 2.' }
+           // Add more as needed
+       };
 
-    }
-
-function getGrade(score){
-
-     if(score == 100){
-        return "A++"
-     } else if (score >= 90){
-        return "A";
-     }else if (score >= 80){
-        return "B";
-     }else if (score >= 70){
-      return "C";
-   }else if (score >= 60){
-      return "D";
-   }else{
-      return "F";
+       if (productId && productDetails[productId]) {
+           document.getElementById('product-title').textContent = productDetails[productId].title;
+           document.getElementById('product-description').textContent = productDetails[productId].description;
+       } else {
+           // Handle case where product ID doesn't exist
+           console.error('Product ID not found');
+       }
    }
-
-}
-
-function passInfo(score) {
-   return getGrade(score) == "F"
-}
-
-function message(aveScore, stdScore){
-   let stdGrade = getGrade();
-   let avgScore = averageNum();
-
-    if (passInfo(stdScore) != "F"){
-      mesg.textContent = "Your score is ! " + stdGrade + ". and your average is "+ avgScore + ". You passed.";
-    }else{
-      mesg.textContent = "Your score is ! " + stdGrade + ". and your average is "+ avgScore + ". You failed.";
-    }
-
-    return mesg;
-}
-console.log(message([23,29,10,15,11], 45))
+});
